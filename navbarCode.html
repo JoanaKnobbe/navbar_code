@@ -1,0 +1,166 @@
+<!--desktop-->
+<style>
+
+.primary-navigation {
+  color: #fff;
+  font-family: "Lora","Times New Roman",serif;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  height: 70vh; 
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+
+.primary-navigation ul, 
+.primary-navigation li{
+  list-style: none;
+  font-size: 15px;
+  text-align: right;
+text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+
+a{
+color: #FFFFFF
+}
+
+.v65-layoutHeaderNav {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+width: 70vw;
+justify-content: space-around;
+}
+
+</style>
+
+<nav class="primary-navigation">
+   <ul class="v65-layoutHeaderNav">
+      <li class="v65-home"><a class="menuItem" href="/">{   Home</a></li>
+      <li>
+         <a href="/Our-Story/" aria-expanded="false" aria-controls="OurStoryMenu" class="menuDropdownParent">Our Story</a> 
+         <ul id="OurStoryMenu">
+            <li><a href="/Gus-Kalaris/" tabindex="-1" class=" ">Gus Kalaris</a> 
+            </li>
+            <li><a href="/Robert-Egelhoff/" tabindex="-1" class=" ">Robert Egelhoff</a> 
+            </li>
+            <li><a href="/Manny-gomes/" tabindex="-1" class=" ">Manny Gomes</a> 
+            </li>
+         </ul>
+         <span style="" class="v65-subMenuAccessibilityIcon v65-invisible icon-angle-down" tabindex="0"></span>
+      </li>
+      <li>
+         <a href="/Our-Wines/" aria-expanded="false" aria-controls="PurchaseOur WinesMenu" class="menuDropdownParent">Purchase Our Wines</a> 
+         <ul id="PurchaseOur WinesMenu">
+            <li><a href="/Axios/" tabindex="-1" class=" ">Axios</a> 
+            </li>
+            <li><a href="/2131/" tabindex="-1" class=" ">2131</a> 
+            </li>
+            <li><a href="/Worthy/" tabindex="-1" class=" ">Worthy</a> 
+            </li>
+            <li><a href="/Kalaris/" tabindex="-1" class=" ">Kalaris</a> 
+            </li>
+            <li><a href="/Truth/" tabindex="-1" class=" ">Truth</a> 
+            </li>
+            <li><a href="/Telios/" tabindex="-1" class=" ">Telios</a> 
+            </li>
+            <li><a href="/Philotimo-2015/" tabindex="-1" class=" ">Philotimo</a> 
+            </li>
+            <li><a href="/All-Wines/" tabindex="-1" class=" ">All Wines</a> 
+            </li>
+            <li><a href="/Library-Vintages/" tabindex="-1" class=" ">Library Vintages</a> 
+            </li>
+            <li><a href="/Big-small-Bottles/" tabindex="-1" class=" ">Big &amp; Small Bottles</a> 
+            </li>
+         </ul>
+         <span style="" class="v65-subMenuAccessibilityIcon v65-invisible icon-angle-down" tabindex="0"></span>
+      </li>
+      <li><a href="/Featured-Wines/" class="menuItem">Featured Wines</a> 
+      </li>
+      <li>
+         <a href="/press/" aria-expanded="false" aria-controls="PressMenu" class="menuDropdownParent">Press   }</a> 
+         <ul id="PressMenu">
+            <li><a href="/Axios-1/" tabindex="-1" class=" ">Axios</a> 
+            </li>
+            <li><a href="/2131-1/" tabindex="-1" class=" ">2131</a> 
+            </li>
+            <li><a href="/Worthy-Press-1/" tabindex="-1" class=" ">Worthy</a> 
+            </li>
+            <li><a href="/Kalaris-Press-1/" tabindex="-1" class=" ">Kalaris</a> 
+            </li>
+            <li><a href="/Truth-1/" tabindex="-1" class=" ">Truth</a> 
+            </li>
+            <li><a href="/Telios-1/" tabindex="-1" class=" ">Telios</a> 
+            </li>
+            <li><a href="/Philotimo-1/" tabindex="-1" class=" ">Philotimo</a> 
+            </li>
+         </ul>
+      </li>
+   </ul>
+</nav>
+
+<script>
+let DropdownParent=document.querySelectorAll(".menuDropdownParent") 
+let menuItem=document.querySelectorAll(".menuItem")
+let menuDrop = false;
+// stop displaying uls
+function notDisplay(){
+  for (let i=0 ; i<DropdownParent.length ; i++){
+DropdownParent[i].nextElementSibling.style.visibility = "hidden";
+	menuDrop = false;
+  };
+};
+  
+function display(){
+for (let i=0 ; i<DropdownParent.length ; i++){
+DropdownParent[i].addEventListener("mouseover", (event) => {   
+  menuDrop=true;
+  checkOpen();
+DropdownParent[i].nextElementSibling.style.visibility = "visible" });
+}
+
+for (let i=0 ; i<menuItem.length ; i++){
+menuItem[i].addEventListener("mouseover", (event) => {   
+  menuDrop=true;
+  checkOpen()
+});
+}
+
+}
+
+notDisplay();
+
+function checkOpen(){
+if(menuDrop) {
+	notDisplay();
+  } else {
+	display();
+  };
+};
+
+// display if it has mouse over
+for (let i=0 ; i<DropdownParent.length ; i++){
+	display();
+};
+
+
+const menu = document.querySelector("#menu");
+const para = document.querySelector(".v65-layoutHeaderNav");
+const mql = window.matchMedia("(max-width: 801px)");
+    	menu.style.visibility = "hidden";
+
+mql.addEventListener("change", (event) => {
+  if (event.matches) {
+    para.style.visibility = "hidden";
+    menu.style.visibility = "visible";
+	notDisplay();
+  } else {
+        para.style.visibility = "visible";
+    	menu.style.visibility = "hidden";
+  }
+});
+
+</script>
